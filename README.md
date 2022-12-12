@@ -587,6 +587,6 @@ Esse endpoint deverá listar as transações realizadas de uma conta específica
 -   [Revisão de objetos e funções](https://aulas.cubos.academy/turma/45f23573-f576-4319-ab62-3ad711c11b1d/aulas/d1fdc9de-44be-4c53-8cbc-b4d1f9bdd8d8)
 
 
-**LEMBRE-SE**: é melhor feito do que perfeito!!!
+**LEMBRE-SE**: Feito é melhor do que perfeito, mas não faça mal feito!!!
 
 ###### tags: `back-end` `módulo 2` `nodeJS` `API REST` `desafio`
