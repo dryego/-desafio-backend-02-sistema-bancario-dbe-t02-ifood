@@ -1,4 +1,6 @@
-let { contas, numeroConta } = require("../bancodedados");
+let { contas } = require("../bancodedados");
+const { v4: uuidv4 } = require('uuid');
+let contaId = 1;
 
 const criarConta = async (req, res) => {
 
@@ -29,7 +31,7 @@ const criarConta = async (req, res) => {
         const saldoInicial = 0;
 
         const novaConta = {
-            numero: numeroConta++,
+            numero: contaId++,//uuidv4(),
             saldo: saldoInicial,
             usuario: {
                 nome: nome,
@@ -53,7 +55,7 @@ const criarConta = async (req, res) => {
 
         return res.status(201).json();
     } catch (erro) {
-        return res.status(500).json({ menssagem: 'Erro interno.' });
+        return res.status(500).json({ menssagem: `Erro interno. ${erro.message}` });
     };
 };
 

@@ -53,7 +53,7 @@ const transferi = async (req, res) => {
 
         return res.status(200).json();
     } catch (erro) {
-        return res.status(500).json({ mensagem: 'Erro interno.' });
+        return res.status(500).json({ menssagem: `Erro interno. ${erro.message}` });
     };
 };
 

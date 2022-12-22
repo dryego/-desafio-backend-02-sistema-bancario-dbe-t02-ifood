@@ -33,7 +33,7 @@ const extrato = async (req, res) => {
 
         };
     } catch (erro) {
-        return res.status(500).json({ mensagem: 'Erro interno.' });
+        return res.status(500).json({ menssagem: `Erro interno. ${erro.message}` });
     };
 
 };

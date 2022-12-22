@@ -9,6 +9,5 @@ module.exports = {
     saques: [],
     depositos: [],
     transferencias: [],
-    numeroConta: 1
 
 }

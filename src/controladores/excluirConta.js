@@ -19,7 +19,7 @@ const excluirConta = async (req, res) => {
 
         return res.status(200).json();
     } catch (erro) {
-        return res.status(500).json({ menssagem: 'Erro Interno.' + erro.menssagem });
+        return res.status(500).json({ menssagem: `Erro interno. ${erro.message}` });
     }
 };
 

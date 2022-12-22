@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dryego/-desafio-backend-02-sistema-bancario-dbe-t02-ifood#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "uuid": "^9.0.0"
   }
 }

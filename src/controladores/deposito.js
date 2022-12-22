@@ -37,7 +37,7 @@ const depositar = async (req, res) => {
 
         return res.status(200).json();
     } catch (erro) {
-        return res.status(500).json({ mensagem: 'Erro insterno.' });
+        return res.status(500).json({ menssagem: `Erro interno. ${erro.message}` });
     }
 };
 
