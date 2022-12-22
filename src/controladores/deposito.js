@@ -1,8 +1,11 @@
 let { depositos, contas } = require('../bancodedados');
+const buscarConta = require('../configuracoes/buscarConta');
 const dataHora = require('../configuracoes/dataHora');
 
 const depositar = async (req, res) => {
+
     const { numero_conta, valor } = req.body;
+
     try {
         if (!numero_conta) {
             return res.status(400).json({ mensagem: 'Numero da conta nao informado.' });
@@ -16,7 +19,7 @@ const depositar = async (req, res) => {
             return res.status(400).json({ mensagem: 'Valor de deposito invalido.' });
         };
 
-        const contaValida = contas.find((busca) => { return busca.numero === Number(numero_conta) });
+        const contaValida = buscarConta(numero_conta);
 
         if (!contaValida) {
             return res.status(400).json({ mensagem: 'Conta não encontrada.' });

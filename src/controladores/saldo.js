@@ -1,4 +1,5 @@
 const { contas } = require('../bancodedados');
+const buscarConta = require('../configuracoes/buscarConta');
 
 const saldo = (req, res) => {
     const { numero_conta, senha } = req.query;
@@ -11,7 +12,7 @@ const saldo = (req, res) => {
         return res.status(400).json({ mensagem: 'Senha não informada.' });
     };
 
-    const contaValida = contas.find((buscar) => { return buscar.numero === Number(numero_conta) });
+    const contaValida = buscarConta(numero_conta);
 
     if (!contaValida) {
         return res.status(400).json({ mensagem: 'Conta nao encontrada.' });

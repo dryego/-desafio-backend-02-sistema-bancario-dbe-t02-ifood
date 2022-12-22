@@ -1,4 +1,5 @@
 const { transferencias, contas } = require('../bancodedados');
+const buscarConta = require('../configuracoes/buscarConta');
 const dataHora = require('../configuracoes/dataHora');
 
 const transferi = async (req, res) => {
@@ -20,19 +21,19 @@ const transferi = async (req, res) => {
             return res.status(400).json({ mensagem: 'Senha não informado.' })
         };
 
-        const contaValidaOrigem = contas.find((busca) => { return busca.numero === Number(numero_conta_origem) });
+        const contaValidaOrigem = buscarConta(numero_conta_origem);
 
         if (!contaValidaOrigem) {
             return res.status(400).json({ mensagem: 'Conta não encontrada.' });
         };
 
-        const contaValidaDestino = contas.find((busca) => { return busca.numero === Number(numero_conta_destino) });
+        const contaValidaDestino = buscarConta(numero_conta_destino);
 
         if (!contaValidaDestino) {
             return res.status(400).json({ mensagem: 'Conta não encontrada.' });
         };
 
-        if (contaValidaOrigem.saldo <= valor) {
+        if (contaValidaOrigem.saldo < valor) {
             return res.status(400).json({ mensagem: 'Saldo insuficiente para realizar a transferencia.' });
         };
 
@@ -50,12 +51,10 @@ const transferi = async (req, res) => {
 
         };
 
-        console.log(transferencias);
-
         return res.status(200).json();
     } catch (erro) {
         return res.status(500).json({ mensagem: 'Erro interno.' });
-    }
+    };
 };
 
 module.exports = transferi;

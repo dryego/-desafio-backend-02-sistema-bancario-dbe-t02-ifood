@@ -1,4 +1,5 @@
-const { saques, contas } = require('../bancodedados');
+const { saques } = require('../bancodedados');
+const buscarConta = require('../configuracoes/buscarConta');
 const dataHora = require('../configuracoes/dataHora');
 
 const sacar = (req, res) => {
@@ -16,7 +17,7 @@ const sacar = (req, res) => {
         return res.status(400).json({ mensagem: 'Valor não informado.' });
     };
 
-    const contaValida = contas.find((busca) => { return busca.numero === Number(numero_conta) });
+    const contaValida = buscarConta(numero_conta)
 
     if (!contaValida) {
         return res.status(400).json({ mensagem: 'Conta não encontrada.' });

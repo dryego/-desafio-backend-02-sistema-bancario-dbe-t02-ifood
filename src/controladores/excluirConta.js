@@ -1,11 +1,11 @@
 let { contas } = require('../bancodedados');
+const buscarConta = require('../configuracoes/buscarConta');
 
 const excluirConta = async (req, res) => {
     const { numeroConta } = req.params;
 
     try {
-        const contaValida = contas.find((busca) => { return busca.numero === Number(numeroConta) });
-        console.log(contaValida);
+        const contaValida = buscarConta(numeroConta);
 
         if (!contaValida) {
             return res.status(404).json({ menssagem: 'Conta NÃO encontrada.' })
