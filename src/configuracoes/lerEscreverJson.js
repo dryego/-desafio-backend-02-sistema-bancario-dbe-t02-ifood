@@ -1,13 +1,14 @@
-const fs = require('fs/promises');
+const { readFile, writeFile } = require('fs/promises');
 
 const lerjson = async () => {
-    const lerJson = await fs.readFile('./src/bancoDeDados.json');
-    const parseJson = JSON.parse(lerJson);
+    let lerJson = await readFile('./src/bancoDeDados.json');
+    lerJson = JSON.parse(lerJson);
+    return lerJson;
 };
 
 const escreverJson = async () => {
-    const escreverJson = JSON.stringify(lerjson);
-    await fs.writeFile('./src/bancoDeDados.json', escreverJson);
+    const escreverJson = JSON.stringify(await lerjson());
+    return await writeFile('./src/bancoDeDados.json', escreverJson);
 };
 
 module.exports = { lerjson, escreverJson }

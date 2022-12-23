@@ -7,6 +7,7 @@ const criarConta = async (req, res) => {
     const { nome, cpf, data_nascimento, telefone, email, senha } = req.body;
 
     try {
+
         if (!nome) {
             return await res.status(400).json({ menssagem: 'Nome não informado.' });
         };
@@ -54,6 +55,7 @@ const criarConta = async (req, res) => {
         contas.push(novaConta);
 
         return res.status(201).json();
+
     } catch (erro) {
         return res.status(500).json({ menssagem: `Erro interno. ${erro.message}` });
     };
