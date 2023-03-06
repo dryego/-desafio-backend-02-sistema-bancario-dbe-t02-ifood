@@ -44,6 +44,10 @@ Os dados serão persistidos em memória, no objeto existente dentro do arquivo `
 
 ### Listar contas bancárias
 
+#### `GET` `/contas?senha_banco=Cubos123Bank`
+
+Esse endpoint deve listar todas as contas bancárias existentes.
+
 ![mostra contas](https://user-images.githubusercontent.com/12173011/222998346-c3de553c-47be-4dec-a193-6292a2784ab7.png)
 
 ### Criar conta bancária
