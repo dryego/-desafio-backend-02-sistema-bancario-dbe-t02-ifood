@@ -1,11 +1,6 @@
-![](https://i.imgur.com/xG74tOh.png)
-
 # Desafio Módulo 2 - Back-end
 
-Você acabou de ser contratado pela melhor empresa de tecnologia do mundo: a **CUBOS**.
-Sua primeira tarefa como desenvolvedor é criar uma API para um Banco Digital. Esse será um projeto **piloto**, ou seja, no futuro outras funcionalidades serão implementadas, portanto, dados do banco (nome, agência, etc.) serão imutáveis.
-
-Seu papel é construir uma RESTful API que permita:
+construção de uma RESTful API que permita:
 
 -   Criar conta bancária
 -   Listar contas bancárias
@@ -16,18 +11,6 @@ Seu papel é construir uma RESTful API que permita:
 -   Transferir valores entre contas bancárias
 -   Consultar saldo da conta bancária
 -   Emitir extrato bancário
-
-**Importante: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação, ok?**
-
-**Exemplo:**
-
-```javascript
-// Quando é informado um número de conta que não existe:
-// HTTP Status 404
-{
-    "mensagem": "Conta bancária não encontada!"
-}
-```
 
 ## Persistências dos dados
 
@@ -57,94 +40,11 @@ Os dados serão persistidos em memória, no objeto existente dentro do arquivo `
     ],
 }
 ```
-## Requisitos obrigatórios
-
--   Sua API deve seguir o padrão REST
--   Seu código deve estar organizado, delimitando as responsabilidades de cada arquivo adequadamente. Ou seja, é esperado que ele tenha, no mínimo:
-    -   Um arquivo index.js
-    -   Um arquivo de rotas
-    -   Um pasta com controladores
--   Qualquer valor (dinheiro) deverá ser representado em centavos (Ex.: R$ 10,00 reais = 1000)
--   Evite códigos duplicados. Antes de copiar e colar, pense se não faz sentido esse pedaço de código estar centralizado numa função.
-
-## Status Code
-
-Abaixo, listamos os possíveis ***status code*** esperados como resposta da API.
-
-Obs.: A lista abaixo é para consulta, **não** significa que todos os ***status codes*** precisam necessariamente ser utilizados.
-
-```javascript
-// 200 (OK) = requisição bem sucedida
-// 201 (Created) = requisição bem sucedida e algo foi criado
-// 204 (No Content) = requisição bem sucedida, sem conteúdo no corpo da resposta
-// 400 (Bad Request) = o servidor não entendeu a requisição pois está com uma sintaxe/formato inválido
-// 401 (Unauthorized) = o usuário não está autenticado (logado)
-// 403 (Forbidden) = o usuário não tem permissão de acessar o recurso solicitado
-// 404 (Not Found) = o servidor não pode encontrar o recurso solicitado
-// 500 (Internal Server Error) = falhas causadas pelo servidor
-```
-
 ## Endpoints
 
 ### Listar contas bancárias
 
-#### `GET` `/contas?senha_banco=Cubos123Bank`
 
-Esse endpoint deverá listar todas as contas bancárias existentes.
-
--   Você deverá, **OBRIGATORIAMENTE**:
-
-    -   Verificar se a senha do banco foi informada (passado como query params na url)
-    -   Validar se a senha do banco está correta
-
--   **Requisição** - query params (respeitando este nome)
-
-    -   senha_banco
-
--   **Resposta**
-    -   listagem de todas as contas bancárias existentes
-
-#### Exemplo de resposta
-
-```javascript
-// HTTP Status 200 / 201 / 204
-// 2 contas encontradas
-[
-    {
-        "numero": "1",
-        "saldo": 0,
-        "usuario": {
-            "nome": "Foo Bar",
-            "cpf": "00011122233",
-            "data_nascimento": "2021-03-15",
-            "telefone": "71999998888",
-            "email": "foo@bar.com",
-            "senha": "1234"
-        }
-    },
-    {
-        "numero": "2",
-        "saldo": 1000,
-        "usuario": {
-            "nome": "Foo Bar 2",
-            "cpf": "00011122234",
-            "data_nascimento": "2021-03-15",
-            "telefone": "71999998888",
-            "email": "foo@bar2.com",
-            "senha": "12345"
-        }
-    }
-]
-
-// nenhuma conta encontrada
-[]
-```
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "A senha do banco informada é inválida!"
-}
-```
 
 ### Criar conta bancária
 
